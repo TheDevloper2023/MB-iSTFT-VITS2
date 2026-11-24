@@ -39,9 +39,28 @@ from losses import (
 from mel_processing import mel_spectrogram_torch, spec_to_mel_torch
 from text.symbols import symbols
 
-torch.autograd.set_detect_anomaly(True)
-torch.backends.cudnn.benchmark = True
+#torch.autograd.set_detect_anomaly(True)
+torch.backends.cudnn.benchmark = False
 global_step = 0
+
+import os
+import logging
+
+os.environ["NUMBA_DISABLE_JIT"] = "0"
+os.environ["NUMBA_DEBUG_ARRAY_STATS"] = "0"
+os.environ["NUMBA_LOG_LEVEL"] = "WARNING"
+
+for _name in (
+    "numba",
+    "numba.core",
+    "numba.core.byteflow",
+    "numba.core.ssa",
+    "numba.core.interpreter",
+    "numba.core.typeinfer",
+    "matplotlib",
+    "PIL",
+):
+    logging.getLogger(_name).setLevel(logging.WARNING)
 
 
 # - base vits2 : Aug 29, 2023
