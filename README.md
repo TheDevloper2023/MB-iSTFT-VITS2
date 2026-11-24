@@ -1,3 +1,7 @@
+## Very experimental fork that adds various features to this abomination of a repo
+## There will be a separate repo with actual code when this atrocity is comparable to modern TTS while being light
+
+
 # MB-iSTFT-VITS2
 
 ![Alt text](resources/image6.png)
